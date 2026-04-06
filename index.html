@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfólio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ── BOTÃO EDITAR ── -->
+  <button id="btnEditar" onclick="abrirEditor()">✏️ Editar</button>
+
+  <!-- ── PORTFÓLIO (visualização) ── -->
+  <div id="portfolio">
+
+    <header>
+      <div class="header-inner">
+        <div class="avatar" id="avatarLetra" style="display:none"></div>
+        <img src="foto.jpg.jpeg" alt="minha foto" class="foto-perfil" />        <div>
+          <h1 id="vNome"></h1>
+          <p id="vTitulo" class="titulo"></p>
+          <p id="vCidade" class="cidade"></p>
+        </div>
+      </div>
+      <div class="contatos" id="vContatos"></div>
+    </header>
+
+    <main>
+      <section>
+        <h2>Sobre mim</h2>
+        <p id="vSobre"></p>
+      </section>
+
+      <section>
+        <h2>Experiências</h2>
+        <div id="vExperiencias"></div>
+      </section>
+
+      <section>
+        <h2>Educação</h2>
+        <div id="vEducacao"></div>
+      </section>
+
+      <section>
+        <h2>Habilidades</h2>
+        <div id="vHabilidades" class="skills-grid"></div>
+      </section>
+
+      <section>
+        <h2>Projetos</h2>
+        <div id="vProjetos" class="projetos-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Feito com FastAPI + HTML/CSS/JS</p>
+    </footer>
+  </div>
+
+  <!-- ── MODAL EDITOR ── -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>✏️ Editar Currículo</h2>
+        <button class="fechar" onclick="fecharEditor()">✕</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab ativo" onclick="trocarTab(this,'tab-basico')">Básico</button>
+        <button class="tab" onclick="trocarTab(this,'tab-contato')">Contato</button>
+        <button class="tab" onclick="trocarTab(this,'tab-exp')">Experiências</button>
+        <button class="tab" onclick="trocarTab(this,'tab-edu')">Educação</button>
+        <button class="tab" onclick="trocarTab(this,'tab-skills')">Habilidades</button>
+        <button class="tab" onclick="trocarTab(this,'tab-proj')">Projetos</button>
+      </div>
+
+      <!-- Básico -->
+      <div id="tab-basico" class="tab-content ativo">
+        <label>Nome<input id="eNome" /></label>
+        <label>Título Profissional<input id="eTitulo" /></label>
+        <label>Sobre mim<textarea id="eSobre" rows="4"></textarea></label>
+      </div>
+
+      <!-- Contato -->
+      <div id="tab-contato" class="tab-content">
+        <label>E-mail<input id="eEmail" /></label>
+        <label>Telefone<input id="eTelefone" /></label>
+        <label>LinkedIn<input id="eLinkedin" /></label>
+        <label>GitHub<input id="eGithub" /></label>
+        <label>Cidade<input id="eCidade" /></label>
+      </div>
+
+      <!-- Experiências -->
+      <div id="tab-exp" class="tab-content">
+        <div id="listaExp"></div>
+        <button class="btn-add" onclick="adicionarItem('exp')">+ Adicionar Experiência</button>
+      </div>
+
+      <!-- Educação -->
+      <div id="tab-edu" class="tab-content">
+        <div id="listaEdu"></div>
+        <button class="btn-add" onclick="adicionarItem('edu')">+ Adicionar Educação</button>
+      </div>
+
+      <!-- Habilidades -->
+      <div id="tab-skills" class="tab-content">
+        <div id="listaSkills"></div>
+        <button class="btn-add" onclick="adicionarItem('skill')">+ Adicionar Habilidade</button>
+      </div>
+
+      <!-- Projetos -->
+      <div id="tab-proj" class="tab-content">
+        <div id="listaProj"></div>
+        <button class="btn-add" onclick="adicionarItem('proj')">+ Adicionar Projeto</button>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-cancelar" onclick="fecharEditor()">Cancelar</button>
+        <button class="btn-salvar" onclick="salvar()">💾 Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
